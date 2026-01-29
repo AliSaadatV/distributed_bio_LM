@@ -1,6 +1,13 @@
-# DNA Foundation Models
+# Genomics Foundation Models
 
-Small-scale DNA language models based on the Genos architecture, designed for genomic sequence modeling using Mixture of Experts (MoE) transformers.
+Genomic language models designed for DNA/RNA/Protein sequence modeling using Mixture of Experts (MoE) transformers.
+
+## Key architectural choices:
+
+- Mixture of Experts and Switch Transformer
+- Grouped Query Attention from Llama 2
+- RoPE from RoFormer
+- SwiGLU from PaLM
 
 ## Model Specifications
 
@@ -72,13 +79,14 @@ The SentencePiece tokenizer is recommended as it can learn meaningful DNA patter
 
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd Genos
+git clone git@github.com:AliSaadatV/distributed_bio_LM.git
+cd distributed_bio_LM
 
 # Install dependencies
 pip install -r requirements.txt
 
 # Install Megatron-LM (from included submodule)
+git clone git@github.com:NVIDIA/Megatron-LM.git
 cd megatron_lm && pip install --no-build-isolation .[mlm,dev] && cd ..
 
 # Optional: Install Flash Attention for better performance
@@ -97,7 +105,7 @@ python -c "from megatron.core import mpu; print('Megatron-LM OK')"
 
 ## Data Preparation
 
-The models are trained on multi-species genomes from the DNABERT-2 pretraining dataset ([InstaDeepAI/multi_species_genomes](https://huggingface.co/datasets/InstaDeepAI/multi_species_genomes)), following the approach described in the DNABERT-2 paper (ICLR 2024).
+The models are trained on multi-species genomes from the DNABERT-2 pretraining dataset.
 
 ### Data Format
 
@@ -197,7 +205,7 @@ torchrun --standalone --nproc_per_node=4 training/train.py \
 ## Project Structure
 
 ```
-Genos/
+
 ├── configs/
 │   ├── small_8m.yaml              # Small model configuration
 │   └── medium_35m.yaml            # Medium model configuration
@@ -240,11 +248,6 @@ The training script tracks several GPU metrics:
 Metrics are logged to `training_log.jsonl` in the output directory.
 
 
-## Key architectural choices:
 
-- Mixture of Experts from Genos and Switch Transformer
-- Grouped Query Attention from Llama 2
-- RoPE from RoFormer
-- SwiGLU from PaLM
 
 
