@@ -17,7 +17,6 @@ Genomic language models designed for DNA/RNA/Protein sequence modeling using Mix
 |-----------|-------|
 | Total Parameters | ~8M |
 | Active Parameters | ~4M |
-| Training Tokens | 160M |
 | Architecture | MoE Transformer |
 | Number of Experts | 4 |
 | Top-k | 2 |
@@ -35,7 +34,6 @@ Genomic language models designed for DNA/RNA/Protein sequence modeling using Mix
 |-----------|-------|
 | Total Parameters | ~35M |
 | Active Parameters | ~18M |
-| Training Tokens | 700M |
 | Architecture | MoE Transformer |
 | Number of Experts | 4 |
 | Top-k | 2 |
