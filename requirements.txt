@@ -1,0 +1,39 @@
+# DNA Foundation Model Training Dependencies
+# Minimal requirements for training DNA MoE Transformer models
+
+# Core Deep Learning
+torch>=2.1.0
+torchvision>=0.16.0
+
+# Transformers and Tokenization
+transformers>=4.35.0
+tokenizers>=0.15.0
+
+# Data Loading (optional, not required for genome download)
+# datasets>=2.14.0
+biopython>=1.81
+
+# Numerical Computing
+numpy>=1.24.0
+
+# Configuration and Logging
+pyyaml>=6.0.0
+wandb>=0.15.0
+tqdm>=4.65.0
+
+# GPU Monitoring
+nvidia-ml-py>=12.0.0
+
+# Flash Attention (optional but recommended for efficiency)
+# Install separately: pip install flash-attn --no-build-isolation
+# flash-attn>=2.4.0
+
+# Megatron-LM (for large-scale training)
+# Install with: pip install --no-build-isolation megatron-core[mlm,dev]
+# Or from cloned repo: cd megatron_lm && pip install --no-build-isolation .[mlm,dev]
+sentencepiece>=0.1.99
+
+# Development (optional)
+# pytest>=7.4.0
+# black>=23.0.0
+# isort>=5.12.0

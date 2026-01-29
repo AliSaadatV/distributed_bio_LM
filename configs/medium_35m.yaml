@@ -1,0 +1,33 @@
+# Configuration for Medium DNA Model (~35M parameters)
+# Architecture: MoE Transformer (following Genos patterns)
+# Target: 35M total params, 18M active params
+# Training tokens: 700M (20x parameters)
+
+# Model dimensions
+# vocab_size is determined by tokenizer:
+#   - SentencePiece (default): 128 (trained BPE)
+#   - DNANucleotideTokenizer: 16
+hidden_size: 512
+num_layers: 8
+num_attention_heads: 8
+num_query_groups: 4  # GQA: 4 KV heads shared across 8 query heads
+
+# MoE configuration
+num_experts: 4
+moe_top_k: 2
+moe_ffn_hidden_size: 512
+
+# Training configuration (fixed 512bp sequences)
+max_seq_length: 512
+dropout: 0.0
+attention_dropout: 0.0
+
+# RoPE configuration (10000 works well for 512 seq length)
+rope_base: 10000
+
+# MoE loss coefficients (matches Genos)
+aux_loss_coeff: 0.001
+z_loss_coeff: 0.001
+
+# Precision
+use_flash_attention: true
